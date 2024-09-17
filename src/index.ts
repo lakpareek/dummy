@@ -1,16 +1,13 @@
+import bodyParser from "body-parser";
 import express, { Request, Response } from "express";
 const cors = require("cors");
 
 const app = express();
 const port = 3000;
 
-// Middleware to parse JSON bodies
-app.use(express.json());
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-  next();
-});
+// Middleware
+app.use(cors()); // This will allow all origins
+app.use(bodyParser.json());
 
 // Define the User interface
 interface User {
